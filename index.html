@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>エンディングノート | 無料で使えるデジタル終活シート</title>
+  <meta name="description" content="ブラウザで使える無料のエンディングノート。家族への伝言、資産情報、医療・介護の希望、葬儀の希望などを整理できます。印刷対応。">
+  <meta name="keywords" content="エンディングノート,終活,無料,デジタル,家族,資産管理,遺言">
+  <meta property="og:title" content="エンディングノート | 無料デジタル終活シート">
+  <meta property="og:description" content="家族への伝言、資産情報、医療の希望をブラウザで整理。印刷もできる無料ツール。">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <h1>エンディング<br>ノート</h1>
+      <p class="subtitle">大切な人へ残すノート</p>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#" class="nav-link active" data-page="intro">はじめに</a></li>
+      <li><a href="#" class="nav-link" data-page="personal">自分のこと</a></li>
+      <li><a href="#" class="nav-link" data-page="medical">医療・介護</a></li>
+      <li><a href="#" class="nav-link" data-page="funeral">葬儀・お墓</a></li>
+      <li><a href="#" class="nav-link" data-page="assets">資産・財産</a></li>
+      <li><a href="#" class="nav-link" data-page="insurance">保険・年金</a></li>
+      <li><a href="#" class="nav-link" data-page="contacts">大切な連絡先</a></li>
+      <li><a href="#" class="nav-link" data-page="digital">デジタル資産</a></li>
+      <li><a href="#" class="nav-link" data-page="message">家族への伝言</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="btn btn-outline" id="exportBtn">データ書出</button>
+      <button class="btn btn-outline" id="importBtn">データ読込</button>
+      <input type="file" id="importFile" accept=".json" style="display:none">
+      <button class="btn btn-outline" id="printBtn">印刷する</button>
+      <button class="theme-toggle" id="themeToggle">ライトモードに切替</button>
+    </div>
+  </nav>
+
+  <div class="main-content">
+
+    <!-- はじめに -->
+    <div class="page active" id="page-intro">
+      <h2 class="page-title">はじめに</h2>
+      <div class="intro-card">
+        <p>このエンディングノートは、あなたの大切な情報を整理し、<br>家族に伝えるためのデジタルノートです。</p>
+        <ul>
+          <li>法的な効力はありません（遺言書とは異なります）</li>
+          <li>データはお使いのブラウザにのみ保存されます</li>
+          <li>外部サーバーには一切送信されません</li>
+          <li>「データ書出」でバックアップを取れます</li>
+          <li>「印刷する」で紙に残すこともできます</li>
+        </ul>
+        <p class="intro-note">すべてを一度に書く必要はありません。<br>書けるところから、少しずつ埋めていってください。</p>
+      </div>
+      <div class="intro-card">
+        <h3>記入日</h3>
+        <input type="date" id="writeDate" class="form-input" style="max-width:300px;">
+        <p class="form-note">定期的に内容を見直して、更新日を記録しましょう。</p>
+      </div>
+    </div>
+
+    <!-- 自分のこと -->
+    <div class="page" id="page-personal">
+      <h2 class="page-title">自分のこと</h2>
+      <div class="form-section">
+        <div class="form-grid">
+          <div class="form-group"><label>氏名</label><input type="text" class="form-input" data-key="personal.name"></div>
+          <div class="form-group"><label>ふりがな</label><input type="text" class="form-input" data-key="personal.nameKana"></div>
+          <div class="form-group"><label>生年月日</label><input type="date" class="form-input" data-key="personal.birthday"></div>
+          <div class="form-group"><label>血液型</label><select class="form-input" data-key="personal.bloodType"><option value="">選択</option><option>A型</option><option>B型</option><option>O型</option><option>AB型</option><option>不明</option></select></div>
+          <div class="form-group"><label>住所</label><input type="text" class="form-input full-width" data-key="personal.address"></div>
+          <div class="form-group"><label>電話番号</label><input type="tel" class="form-input" data-key="personal.phone"></div>
+          <div class="form-group"><label>メールアドレス</label><input type="email" class="form-input" data-key="personal.email"></div>
+          <div class="form-group"><label>本籍地</label><input type="text" class="form-input full-width" data-key="personal.domicile"></div>
+        </div>
+        <div class="form-group"><label>趣味・特技</label><textarea class="form-textarea" data-key="personal.hobbies" rows="3"></textarea></div>
+        <div class="form-group"><label>好きな食べ物</label><input type="text" class="form-input full-width" data-key="personal.favoriteFood"></div>
+        <div class="form-group"><label>自分史・思い出</label><textarea class="form-textarea" data-key="personal.history" rows="6" placeholder="これまでの人生で大切にしてきたこと、思い出に残っていることなどを自由に書いてください"></textarea></div>
+      </div>
+    </div>
+
+    <!-- 医療・介護 -->
+    <div class="page" id="page-medical">
+      <h2 class="page-title">医療・介護の希望</h2>
+      <div class="form-section">
+        <h3>かかりつけ医</h3>
+        <div class="form-grid">
+          <div class="form-group"><label>病院名</label><input type="text" class="form-input" data-key="medical.hospital"></div>
+          <div class="form-group"><label>担当医</label><input type="text" class="form-input" data-key="medical.doctor"></div>
+          <div class="form-group"><label>電話番号</label><input type="tel" class="form-input" data-key="medical.hospitalPhone"></div>
+        </div>
+        <div class="form-group"><label>持病・アレルギー</label><textarea class="form-textarea" data-key="medical.conditions" rows="3"></textarea></div>
+        <div class="form-group"><label>服用中の薬</label><textarea class="form-textarea" data-key="medical.medications" rows="3"></textarea></div>
+
+        <h3>介護の希望</h3>
+        <div class="form-group">
+          <label>介護が必要になったら</label>
+          <select class="form-input" data-key="medical.carePreference">
+            <option value="">選択してください</option>
+            <option>自宅で介護を受けたい</option>
+            <option>施設に入りたい</option>
+            <option>家族に任せる</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group"><label>介護について補足</label><textarea class="form-textarea" data-key="medical.careNote" rows="3"></textarea></div>
+
+        <h3>延命治療の希望</h3>
+        <div class="form-group">
+          <label>延命治療について</label>
+          <select class="form-input" data-key="medical.lifeSupport">
+            <option value="">選択してください</option>
+            <option>できる限りの延命治療を希望する</option>
+            <option>延命治療は望まない（自然に任せたい）</option>
+            <option>家族に判断を任せる</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group"><label>延命治療について補足</label><textarea class="form-textarea" data-key="medical.lifeSupportNote" rows="3"></textarea></div>
+
+        <h3>臓器提供・献体</h3>
+        <div class="form-group">
+          <label>臓器提供の意思</label>
+          <select class="form-input" data-key="medical.organDonation">
+            <option value="">選択してください</option>
+            <option>提供したい</option>
+            <option>提供したくない</option>
+            <option>家族に任せる</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 葬儀・お墓 -->
+    <div class="page" id="page-funeral">
+      <h2 class="page-title">葬儀・お墓の希望</h2>
+      <div class="form-section">
+        <h3>葬儀の希望</h3>
+        <div class="form-group">
+          <label>葬儀の規模</label>
+          <select class="form-input" data-key="funeral.scale">
+            <option value="">選択してください</option>
+            <option>一般葬（親族・友人・知人）</option>
+            <option>家族葬（家族・親族のみ）</option>
+            <option>直葬（火葬のみ）</option>
+            <option>お別れ会・偲ぶ会</option>
+            <option>家族に任せる</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>宗教・宗派</label>
+          <input type="text" class="form-input" data-key="funeral.religion" placeholder="例：仏教（浄土宗）、無宗教 など">
+        </div>
+        <div class="form-group"><label>葬儀で流してほしい曲</label><input type="text" class="form-input full-width" data-key="funeral.music"></div>
+        <div class="form-group"><label>遺影に使ってほしい写真</label><input type="text" class="form-input full-width" data-key="funeral.photo" placeholder="写真の保存場所やファイル名"></div>
+        <div class="form-group"><label>葬儀に呼んでほしい人</label><textarea class="form-textarea" data-key="funeral.inviteList" rows="4" placeholder="名前と連絡先"></textarea></div>
+        <div class="form-group"><label>葬儀について補足</label><textarea class="form-textarea" data-key="funeral.note" rows="3"></textarea></div>
+
+        <h3>お墓の希望</h3>
+        <div class="form-group">
+          <label>お墓の希望</label>
+          <select class="form-input" data-key="funeral.graveType">
+            <option value="">選択してください</option>
+            <option>先祖代々のお墓に入りたい</option>
+            <option>新しくお墓を建てたい</option>
+            <option>納骨堂</option>
+            <option>樹木葬</option>
+            <option>海洋散骨</option>
+            <option>永代供養</option>
+            <option>家族に任せる</option>
+          </select>
+        </div>
+        <div class="form-group"><label>お墓の場所</label><input type="text" class="form-input full-width" data-key="funeral.graveLocation"></div>
+      </div>
+    </div>
+
+    <!-- 資産・財産 -->
+    <div class="page" id="page-assets">
+      <h2 class="page-title">資産・財産</h2>
+      <div class="form-section">
+        <p class="form-note">※具体的な金額を書かない場合は、「ある」「ない」だけでも家族の助けになります。</p>
+
+        <h3>預貯金</h3>
+        <div id="bankAccounts">
+          <div class="repeater-item">
+            <div class="form-grid">
+              <div class="form-group"><label>金融機関名</label><input type="text" class="form-input" data-array="assets.banks" data-field="name" data-index="0"></div>
+              <div class="form-group"><label>支店名</label><input type="text" class="form-input" data-array="assets.banks" data-field="branch" data-index="0"></div>
+              <div class="form-group"><label>種類</label><select class="form-input" data-array="assets.banks" data-field="type" data-index="0"><option>普通</option><option>定期</option><option>当座</option></select></div>
+              <div class="form-group"><label>備考</label><input type="text" class="form-input" data-array="assets.banks" data-field="note" data-index="0"></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-small" id="addBankBtn">+ 口座を追加</button>
+
+        <h3>証券口座</h3>
+        <div id="brokerAccounts">
+          <div class="repeater-item">
+            <div class="form-grid">
+              <div class="form-group"><label>証券会社名</label><input type="text" class="form-input" data-array="assets.brokers" data-field="name" data-index="0"></div>
+              <div class="form-group"><label>口座種類</label><select class="form-input" data-array="assets.brokers" data-field="type" data-index="0"><option>特定口座</option><option>NISA</option><option>一般口座</option></select></div>
+              <div class="form-group"><label>備考</label><input type="text" class="form-input" data-array="assets.brokers" data-field="note" data-index="0"></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-small" id="addBrokerBtn">+ 証券口座を追加</button>
+
+        <h3>不動産</h3>
+        <div class="form-group"><label>所有する不動産</label><textarea class="form-textarea" data-key="assets.realEstate" rows="4" placeholder="土地・建物の所在地、名義など"></textarea></div>
+
+        <h3>借入・ローン</h3>
+        <div class="form-group"><label>借入・ローンの情報</label><textarea class="form-textarea" data-key="assets.loans" rows="4" placeholder="住宅ローン、カードローンなど（借入先、残高目安）"></textarea></div>
+
+        <h3>その他の資産</h3>
+        <div class="form-group"><label>貴金属・美術品・車など</label><textarea class="form-textarea" data-key="assets.others" rows="3"></textarea></div>
+
+        <h3>遺言書</h3>
+        <div class="form-group">
+          <label>遺言書の有無</label>
+          <select class="form-input" data-key="assets.willExists">
+            <option value="">選択してください</option>
+            <option>ある（自筆証書遺言）</option>
+            <option>ある（公正証書遺言）</option>
+            <option>ある（法務局保管）</option>
+            <option>ない</option>
+            <option>作成予定</option>
+          </select>
+        </div>
+        <div class="form-group"><label>遺言書の保管場所</label><input type="text" class="form-input full-width" data-key="assets.willLocation"></div>
+      </div>
+    </div>
+
+    <!-- 保険・年金 -->
+    <div class="page" id="page-insurance">
+      <h2 class="page-title">保険・年金</h2>
+      <div class="form-section">
+        <h3>加入している保険</h3>
+        <div id="insuranceList">
+          <div class="repeater-item">
+            <div class="form-grid">
+              <div class="form-group"><label>保険会社</label><input type="text" class="form-input" data-array="insurance.list" data-field="company" data-index="0"></div>
+              <div class="form-group"><label>種類</label><select class="form-input" data-array="insurance.list" data-field="type" data-index="0"><option>生命保険</option><option>医療保険</option><option>がん保険</option><option>火災保険</option><option>自動車保険</option><option>個人年金</option><option>その他</option></select></div>
+              <div class="form-group"><label>証券番号</label><input type="text" class="form-input" data-array="insurance.list" data-field="policyNo" data-index="0"></div>
+              <div class="form-group"><label>受取人</label><input type="text" class="form-input" data-array="insurance.list" data-field="beneficiary" data-index="0"></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-small" id="addInsuranceBtn">+ 保険を追加</button>
+
+        <h3>年金</h3>
+        <div class="form-grid">
+          <div class="form-group"><label>基礎年金番号</label><input type="text" class="form-input" data-key="insurance.pensionNo"></div>
+          <div class="form-group"><label>年金の種類</label><input type="text" class="form-input" data-key="insurance.pensionType" placeholder="国民年金、厚生年金、企業年金など"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 大切な連絡先 -->
+    <div class="page" id="page-contacts">
+      <h2 class="page-title">大切な連絡先</h2>
+      <div class="form-section">
+        <p class="form-note">万が一の時に連絡してほしい方のリストです。</p>
+        <div id="contactList">
+          <div class="repeater-item">
+            <div class="form-grid">
+              <div class="form-group"><label>名前</label><input type="text" class="form-input" data-array="contacts.list" data-field="name" data-index="0"></div>
+              <div class="form-group"><label>関係</label><input type="text" class="form-input" data-array="contacts.list" data-field="relation" data-index="0" placeholder="例：長男、親友、弁護士"></div>
+              <div class="form-group"><label>電話番号</label><input type="tel" class="form-input" data-array="contacts.list" data-field="phone" data-index="0"></div>
+              <div class="form-group"><label>備考</label><input type="text" class="form-input" data-array="contacts.list" data-field="note" data-index="0"></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-small" id="addContactBtn">+ 連絡先を追加</button>
+      </div>
+    </div>
+
+    <!-- デジタル資産 -->
+    <div class="page" id="page-digital">
+      <h2 class="page-title">デジタル資産</h2>
+      <div class="form-section">
+        <p class="form-note">※パスワードそのものは書かず、「ヒント」や「保管場所」だけを記入することをおすすめします。</p>
+
+        <h3>スマホ・パソコン</h3>
+        <div class="form-group"><label>スマホのロック解除方法のヒント</label><input type="text" class="form-input full-width" data-key="digital.phoneHint" placeholder="例：誕生日4桁、パスワード管理アプリに記載"></div>
+        <div class="form-group"><label>パソコンのログイン方法のヒント</label><input type="text" class="form-input full-width" data-key="digital.pcHint"></div>
+
+        <h3>重要なアカウント</h3>
+        <div id="digitalAccounts">
+          <div class="repeater-item">
+            <div class="form-grid">
+              <div class="form-group"><label>サービス名</label><input type="text" class="form-input" data-array="digital.accounts" data-field="service" data-index="0" placeholder="例：Gmail、銀行アプリ"></div>
+              <div class="form-group"><label>ID/メールアドレス</label><input type="text" class="form-input" data-array="digital.accounts" data-field="id" data-index="0"></div>
+              <div class="form-group"><label>パスワードのヒント</label><input type="text" class="form-input" data-array="digital.accounts" data-field="hint" data-index="0" placeholder="ヒントだけ記入"></div>
+              <div class="form-group"><label>死後の希望</label><select class="form-input" data-array="digital.accounts" data-field="action" data-index="0"><option>削除してほしい</option><option>そのままでよい</option><option>家族に引き継ぎ</option></select></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-small" id="addDigitalBtn">+ アカウントを追加</button>
+
+        <h3>SNS</h3>
+        <div class="form-group">
+          <label>SNSアカウントの死後の扱い</label>
+          <select class="form-input" data-key="digital.snsAction">
+            <option value="">選択してください</option>
+            <option>すべて削除してほしい</option>
+            <option>そのまま残してほしい</option>
+            <option>追悼アカウントにしてほしい</option>
+            <option>家族に任せる</option>
+          </select>
+        </div>
+
+        <h3>サブスクリプション（月額サービス）</h3>
+        <div class="form-group"><label>解約が必要なサービス</label><textarea class="form-textarea" data-key="digital.subscriptions" rows="4" placeholder="例：Netflix、Spotify、Amazon Prime、新聞電子版など"></textarea></div>
+      </div>
+    </div>
+
+    <!-- 家族への伝言 -->
+    <div class="page" id="page-message">
+      <h2 class="page-title">家族への伝言</h2>
+      <div class="form-section">
+        <p class="intro-note">一番大切なページです。伝えたいこと、感謝の気持ち、お願いしたいことを自由に書いてください。</p>
+
+        <div class="form-group">
+          <label>配偶者へ</label>
+          <textarea class="form-textarea" data-key="message.spouse" rows="6" placeholder="感謝の気持ち、伝えたいことを自由に"></textarea>
+        </div>
+        <div class="form-group">
+          <label>子どもたちへ</label>
+          <textarea class="form-textarea" data-key="message.children" rows="6"></textarea>
+        </div>
+        <div class="form-group">
+          <label>親へ</label>
+          <textarea class="form-textarea" data-key="message.parents" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label>友人・その他の方へ</label>
+          <textarea class="form-textarea" data-key="message.friends" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label>その他、伝えておきたいこと</label>
+          <textarea class="form-textarea" data-key="message.other" rows="6" placeholder="ペットのこと、大切にしているものの扱い、感謝していることなど"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
