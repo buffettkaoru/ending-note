@@ -168,6 +168,12 @@
     window.print();
   });
 
+  // アフィリエイト枠：リンク未設定（href="#"）のカードは表示しない
+  document.querySelectorAll("[data-ad]").forEach((card) => {
+    const link = card.querySelector("a");
+    if (!link || link.getAttribute("href") === "#") card.style.display = "none";
+  });
+
   // ライト/ダークモード
   const themeBtn = document.getElementById("themeToggle");
   if (localStorage.getItem("endingNoteTheme") === "light") {

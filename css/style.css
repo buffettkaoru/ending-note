@@ -59,10 +59,35 @@ body { font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN","Meiryo",sans-se
 .repeater-item { padding:12px 0; border-bottom:1px dashed var(--border); }
 .repeater-item:last-child { border-bottom:none; }
 
+/* ガイド・FAQページ */
+.guide-text { color:var(--gray); margin-bottom:8px; }
+.guide-list { padding-left:20px; margin:12px 0; }
+.guide-list li { margin-bottom:8px; color:var(--gray); }
+.form-section p { margin-bottom:10px; }
+.faq-item { padding:14px 0; border-bottom:1px dashed var(--border); }
+.faq-item:last-child { border-bottom:none; }
+.faq-item h3 { color:var(--gold); font-size:1rem; margin-bottom:6px; }
+.faq-item p { color:var(--gray); }
+
+/* アフィリエイト枠（PRカード） */
+.ad-card { position:relative; background:var(--card-bg); border:1px solid var(--gold); border-radius:8px; padding:20px 24px; margin:16px 0; }
+.ad-label { position:absolute; top:10px; right:12px; font-size:0.7rem; color:var(--navy-dark); background:var(--gold); padding:2px 8px; border-radius:3px; font-weight:700; letter-spacing:0.05em; }
+.ad-body h4 { color:var(--gold-light); font-size:1.05rem; margin-bottom:8px; padding-right:40px; }
+.ad-body p { color:var(--gray); font-size:0.9rem; margin-bottom:12px; }
+.btn-cta { display:inline-block; background:var(--gold); color:var(--navy-dark); font-weight:700; text-decoration:none; padding:0.6rem 1.4rem; border-radius:6px; }
+.btn-cta:hover { background:var(--gold-light); }
+
+/* サイドバーのブログリンク・フッター */
+.sidebar-blog-link { display:block; margin-top:10px; text-align:center; font-size:0.8rem; color:var(--gold-light); text-decoration:none; }
+.sidebar-blog-link:hover { text-decoration:underline; }
+.site-footer { margin-top:32px; padding:16px 0; border-top:1px solid var(--border); font-size:0.75rem; color:var(--gray); text-align:center; }
+.site-footer a { color:var(--gold-light); }
+
 @media print {
   .sidebar { display:none; }
   .main-content { margin-left:0; }
   .page { display:block !important; page-break-after:always; }
+  .info-page, .ad-card, .site-footer { display:none !important; }
   body { background:#fff; color:#000; }
   .form-section { border:1px solid #ccc; }
   .form-input, .form-textarea { border:1px solid #ccc; background:#fff; color:#000; }
