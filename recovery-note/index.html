@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回復ノート | 体重もカロリーも書かない、回復のための無料ノート</title>
+  <meta name="description" content="摂食障害からの回復を支える無料のデジタルノート。体重・カロリーの数字は一切書きません。気分の記録、衝動が来たときのお守りリスト、安心できるつながりを整理できます。登録不要・データは端末内のみ。">
+  <meta property="og:title" content="回復ノート | 数字を書かない、回復のための無料ノート">
+  <meta property="og:description" content="気分の記録・お守りリスト・安心リストをブラウザで。登録不要、データは端末の中だけ。">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <h1>回復ノート</h1>
+      <p class="subtitle">数字を書かない、わたしのためのノート</p>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#" class="nav-link active" data-page="intro">はじめに</a></li>
+      <li><a href="#" class="nav-link" data-page="diary">きょうの記録</a></li>
+      <li><a href="#" class="nav-link" data-page="omamori">お守りリスト</a></li>
+      <li><a href="#" class="nav-link" data-page="anshin">安心できるつながり</a></li>
+      <li><a href="#" class="nav-link" data-page="chikai">回復のちかい</a></li>
+      <li><a href="#" class="nav-link" data-page="tsuin">通院・相談メモ</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="btn btn-outline" id="exportBtn">データ書出</button>
+      <button class="btn btn-outline" id="importBtn">データ読込</button>
+      <input type="file" id="importFile" accept=".json" style="display:none">
+      <button class="btn btn-outline" id="printBtn">印刷する</button>
+      <button class="theme-toggle" id="themeToggle">ダークモードに切替</button>
+    </div>
+  </nav>
+
+  <div class="main-content">
+
+    <!-- はじめに -->
+    <div class="page active" id="page-intro">
+      <h2 class="page-title">はじめに</h2>
+      <div class="intro-card">
+        <p>このノートは、摂食障害からの回復に向き合うあなたのための、<br>「数字を書かない」記録ノートです。</p>
+        <ul>
+          <li>体重・カロリー・サイズを書く欄は、どこにもありません</li>
+          <li>データはお使いのブラウザ（端末の中）にだけ保存されます</li>
+          <li>外部サーバーには一切送信されません。登録も不要です</li>
+          <li>「データ書出」でバックアップを取れます</li>
+          <li>「印刷する」で紙のノートにもできます（診察に持っていくのにも便利です）</li>
+        </ul>
+        <p class="intro-note">毎日書かなくて大丈夫。書けない日があるのも、回復の一部です。</p>
+      </div>
+      <div class="help-box">
+        <strong>おねがい：</strong>このノートは医療の代わりにはなれません。
+        つらさが強いときは、ひとりでかかえずに医療機関や相談窓口を頼ってください。<br>
+        ● よりそいホットライン：0120-279-338（24時間・無料）<br>
+        ● お住まいの地域の精神保健福祉センターでも相談できます
+      </div>
+    </div>
+
+    <!-- きょうの記録 -->
+    <div class="page" id="page-diary">
+      <h2 class="page-title">きょうの記録</h2>
+      <div class="help-box">
+        「何を食べたか」より「どんな気持ちだったか」を残すノートです。
+        できたことは、どんなに小さくても立派な一歩です。
+      </div>
+      <div class="form-section">
+        <div id="diaryList"></div>
+        <button class="btn-small" id="addDiaryBtn">＋ 記録を追加</button>
+      </div>
+    </div>
+
+    <!-- お守りリスト -->
+    <div class="page" id="page-omamori">
+      <h2 class="page-title">お守りリスト</h2>
+      <div class="help-box">
+        衝動やつらい気持ちがきたときの「自分の取扱説明書」です。
+        落ち着いているときに書いておくと、しんどい夜のあなたを助けてくれます。<br>
+        例：「あたたかい飲み物をいれる」「5分だけ外の空気を吸う」「◯◯さんのことを考える」
+      </div>
+      <div class="form-section">
+        <div id="omamoriList"></div>
+        <button class="btn-small" id="addOmamoriBtn">＋ お守りを追加</button>
+      </div>
+    </div>
+
+    <!-- 安心できるつながり -->
+    <div class="page" id="page-anshin">
+      <h2 class="page-title">安心できるつながり</h2>
+      <div class="help-box">
+        頼れる人・場所・窓口のリストです。「頼ること」は回復のスキルのひとつ。
+        人でなくても大丈夫（ペット、本、音楽、場所も立派なつながりです）。
+      </div>
+      <div class="form-section">
+        <div id="anshinList"></div>
+        <button class="btn-small" id="addAnshinBtn">＋ つながりを追加</button>
+      </div>
+    </div>
+
+    <!-- 回復のちかい -->
+    <div class="page" id="page-chikai">
+      <h2 class="page-title">回復のちかい</h2>
+      <div class="form-section">
+        <div class="form-group">
+          <label>わたしが回復したい理由</label>
+          <textarea class="form-textarea" data-key="chikai.reason" rows="5" placeholder="だれかのためでも、自分のためでも。ゆらいでもいい、いまの気持ちを書いてください"></textarea>
+        </div>
+        <div class="form-group">
+          <label>回復したらやりたいこと</label>
+          <textarea class="form-textarea" data-key="chikai.todo" rows="5" placeholder="食べることを気にせず旅行に行く、友達とごはんに行く、など自由に"></textarea>
+        </div>
+        <div class="form-group">
+          <label>過去のわたしへ、いまのわたしから</label>
+          <textarea class="form-textarea" data-key="chikai.letter" rows="5" placeholder="いちばんつらかったころの自分に、いまのあなたが声をかけるとしたら"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 通院・相談メモ -->
+    <div class="page" id="page-tsuin">
+      <h2 class="page-title">通院・相談メモ</h2>
+      <div class="help-box">
+        診察やカウンセリングで「話したいこと」「言われたこと」のメモです。
+        印刷して持っていくと、診察室で言葉が出てこないときのお守りになります。
+      </div>
+      <div class="form-section">
+        <div id="tsuinList"></div>
+        <button class="btn-small" id="addTsuinBtn">＋ メモを追加</button>
+      </div>
+    </div>
+
+    <div class="cta-footer">
+      このノートは <a href="https://www.sesshokushougai.net/" target="_blank" rel="noopener">sesshokushougai.net</a> が無料で公開しています。<br>
+      使い方や回復のヒントは Instagram <a href="https://www.instagram.com/mayumi_recovery/" target="_blank" rel="noopener">@mayumi_recovery</a> でも発信中です。
+    </div>
+  </div>
+
+  <script src="note.js"></script>
+</body>
+</html>
