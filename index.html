@@ -9,6 +9,75 @@
   <meta property="og:title" content="エンディングノート | 無料デジタル終活シート">
   <meta property="og:description" content="家族への伝言、資産情報、医療の希望をブラウザで整理。印刷もできる無料ツール。">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="エンディングノート | 無料デジタル終活シート">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://buffettkaoru.github.io/ending-note/">
+  <meta property="og:url" content="https://buffettkaoru.github.io/ending-note/">
+  <!-- TODO: Google Analytics 4 を使う場合は、G-XXXXXXXXXX を自分の測定IDに変えてコメントを外してください
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "エンディングノート | 無料デジタル終活シート",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "ja",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+    "description": "ブラウザで使える無料のエンディングノート。家族への伝言、資産情報、医療・介護の希望、葬儀の希望などを整理でき、印刷にも対応しています。"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "エンディングノートに法的効力はありますか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "エンディングノートに法的効力はありません。財産の分け方など法的に有効な意思表示をしたい場合は、別途遺言書（自筆証書遺言・公正証書遺言など）の作成が必要です。エンディングノートは、遺言書では伝えきれない希望や気持ちを家族に残すためのものです。" }
+      },
+      {
+        "@type": "Question",
+        "name": "遺言書とエンディングノートはどう違いますか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "遺言書は民法で定められた形式に従って作成する法的な文書で、主に財産の相続について効力を持ちます。一方エンディングノートは形式が自由で、医療・介護の希望、葬儀の希望、家族へのメッセージなど、遺言書に書けない内容を幅広く残せます。両方を用意するのが理想的です。" }
+      },
+      {
+        "@type": "Question",
+        "name": "エンディングノートは何歳から書くべきですか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "何歳からでも書けます。病気や事故はいつ起こるかわからないため、20〜30代で書き始める方も増えています。すべてを一度に書く必要はなく、書けるところから少しずつ埋めていけば大丈夫です。" }
+      },
+      {
+        "@type": "Question",
+        "name": "入力したデータはどこに保存されますか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "入力内容はお使いのブラウザ（端末内）にのみ保存され、外部のサーバーには一切送信されません。「データ書出」ボタンでJSONファイルとしてバックアップでき、「印刷する」ボタンで紙に残すこともできます。" }
+      },
+      {
+        "@type": "Question",
+        "name": "このエンディングノートは無料で使えますか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "はい、完全無料でご利用いただけます。会員登録やアプリのインストールも不要で、ブラウザだけですぐに使えます。" }
+      },
+      {
+        "@type": "Question",
+        "name": "書いた内容はあとから修正できますか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "いつでも修正できます。むしろ、生活や気持ちの変化に合わせて年に1回など定期的に見直すことをおすすめします。記入日を更新しておくと、家族がどの時点の希望かを判断しやすくなります。" }
+      },
+      {
+        "@type": "Question",
+        "name": "書いたエンディングノートは家族にどう共有すればいいですか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "印刷して自宅の分かりやすい場所に保管し、保管場所を信頼できる家族に伝えておく方法が確実です。「データ書出」で保存したファイルを家族と共有する方法もあります。ノートの存在自体を誰も知らないと活用されないため、存在と場所を必ず伝えておきましょう。" }
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -19,6 +88,7 @@
     </div>
     <ul class="nav-list">
       <li><a href="#" class="nav-link active" data-page="intro">はじめに</a></li>
+      <li><a href="#" class="nav-link" data-page="guide">書き方ガイド</a></li>
       <li><a href="#" class="nav-link" data-page="personal">自分のこと</a></li>
       <li><a href="#" class="nav-link" data-page="medical">医療・介護</a></li>
       <li><a href="#" class="nav-link" data-page="funeral">葬儀・お墓</a></li>
@@ -27,6 +97,7 @@
       <li><a href="#" class="nav-link" data-page="contacts">大切な連絡先</a></li>
       <li><a href="#" class="nav-link" data-page="digital">デジタル資産</a></li>
       <li><a href="#" class="nav-link" data-page="message">家族への伝言</a></li>
+      <li><a href="#" class="nav-link" data-page="faq">よくある質問</a></li>
     </ul>
     <div class="sidebar-footer">
       <button class="btn btn-outline" id="exportBtn">データ書出</button>
@@ -34,6 +105,7 @@
       <input type="file" id="importFile" accept=".json" style="display:none">
       <button class="btn btn-outline" id="printBtn">印刷する</button>
       <button class="theme-toggle" id="themeToggle">ライトモードに切替</button>
+      <a class="sidebar-blog-link" href="https://www.sesshokushougai.net/" target="_blank" rel="noopener">運営ブログを見る →</a>
     </div>
   </nav>
 
@@ -54,9 +126,41 @@
         <p class="intro-note">すべてを一度に書く必要はありません。<br>書けるところから、少しずつ埋めていってください。</p>
       </div>
       <div class="intro-card">
+        <h3>エンディングノートとは</h3>
+        <p>エンディングノート（終活ノート）とは、自分に万が一のことがあったときに備えて、医療・介護の希望、財産の情報、葬儀の希望、家族への想いなどを書き残しておくノートのことです。</p>
+        <p>遺言書と違って決まった形式はなく、法的効力もありませんが、その分自由に「気持ち」や「実務的な情報」を残せるのが特長です。残された家族は、銀行口座の場所ひとつ探すだけでも大変な労力がかかります。エンディングノートがあるだけで、家族の負担は大きく減ります。</p>
+      </div>
+      <div class="intro-card">
         <h3>記入日</h3>
         <input type="date" id="writeDate" class="form-input" style="max-width:300px;">
         <p class="form-note">定期的に内容を見直して、更新日を記録しましょう。</p>
+      </div>
+    </div>
+
+    <!-- 書き方ガイド -->
+    <div class="page info-page" id="page-guide">
+      <h2 class="page-title">エンディングノートの書き方ガイド</h2>
+      <div class="intro-card">
+        <p>「何から書けばいいかわからない」という方のために、無理なく書き進めるためのステップを紹介します。<strong>完璧に埋める必要はありません。</strong>1ページでも書けば、それだけ家族の助けになります。</p>
+      </div>
+      <div class="form-section">
+        <h3>ステップ1：まずは「大切な連絡先」から</h3>
+        <p class="guide-text">一番書きやすく、一番実用的なのが連絡先リストです。万が一のとき、家族が「誰に知らせればいいのか」で最初に困ります。親族・親友・かかりつけ医・保険の担当者などを書き出しましょう。</p>
+        <h3>ステップ2：資産・保険の「ありか」を書く</h3>
+        <p class="guide-text">金額まで書く必要はありません。「どこの銀行に口座があるか」「どの保険会社と契約しているか」が分かるだけで、家族は手続きを進められます。使っていない口座やサブスクの整理を始めるきっかけにもなります。</p>
+        <h3>ステップ3：医療・介護の希望を書く</h3>
+        <p class="guide-text">延命治療や介護の希望は、家族が最も判断に迷い、心の負担を感じる部分です。「家族に任せる」という選択でも、書いてあるだけで家族は救われます。元気なうちに、落ち着いて考えられる今のうちに書いておきましょう。</p>
+        <h3>ステップ4：葬儀・お墓の希望を書く</h3>
+        <p class="guide-text">葬儀の規模や形式の希望を残しておくと、家族は迷わず、費用面でも適切な判断がしやすくなります。呼んでほしい人のリストは、家族が知らない交友関係を伝える大切な情報です。</p>
+        <h3>ステップ5：家族への伝言は最後にゆっくり</h3>
+        <p class="guide-text">一番大切で、一番時間がかかるページです。感謝の気持ち、伝えそびれていたこと、お願いしたいこと。うまく書こうとせず、話しかけるように書くのがコツです。</p>
+        <h3>書いたあとに必ずやること</h3>
+        <ul class="guide-list">
+          <li><strong>保管場所を家族に伝える</strong> — 存在を知られていないノートは活用されません</li>
+          <li><strong>年に1回見直す</strong> — 誕生日や年末年始など、タイミングを決めておくと続きます</li>
+          <li><strong>印刷して紙でも残す</strong> — デジタルと紙の両方があると確実です</li>
+          <li><strong>財産の分け方は遺言書で</strong> — 法的効力が必要な内容は、遺言書の作成を検討しましょう</li>
+        </ul>
       </div>
     </div>
 
@@ -173,6 +277,15 @@
         </div>
         <div class="form-group"><label>お墓の場所</label><input type="text" class="form-input full-width" data-key="funeral.graveLocation"></div>
       </div>
+      <!-- アフィリエイト枠：葬儀（href="#" のままだと自動的に非表示になります。ASPで取得したリンクに差し替えてください） -->
+      <aside class="ad-card" data-ad>
+        <span class="ad-label">PR</span>
+        <div class="ad-body">
+          <h4>葬儀費用は、事前の見積もりで大きく変わります</h4>
+          <p>葬儀は急に必要になることが多く、その場で決めると費用が割高になりがちです。元気なうちに一度見積もりを取っておくと、家族の金銭的・精神的な負担を減らせます。</p>
+          <a class="btn btn-cta" href="#" target="_blank" rel="sponsored noopener">無料で葬儀の資料請求・見積もりをする</a>
+        </div>
+      </aside>
     </div>
 
     <!-- 資産・財産 -->
@@ -229,6 +342,15 @@
         </div>
         <div class="form-group"><label>遺言書の保管場所</label><input type="text" class="form-input full-width" data-key="assets.willLocation"></div>
       </div>
+      <!-- アフィリエイト枠：相続・遺言（href="#" のままだと自動的に非表示になります） -->
+      <aside class="ad-card" data-ad>
+        <span class="ad-label">PR</span>
+        <div class="ad-body">
+          <h4>財産の分け方は、遺言書に残すと確実です</h4>
+          <p>エンディングノートには法的効力がありません。相続でのトラブルを防ぎたい方は、専門家（司法書士・行政書士・弁護士）への相談や、公正証書遺言の作成を検討しましょう。</p>
+          <a class="btn btn-cta" href="#" target="_blank" rel="sponsored noopener">相続・遺言について無料相談する</a>
+        </div>
+      </aside>
     </div>
 
     <!-- 保険・年金 -->
@@ -254,6 +376,15 @@
           <div class="form-group"><label>年金の種類</label><input type="text" class="form-input" data-key="insurance.pensionType" placeholder="国民年金、厚生年金、企業年金など"></div>
         </div>
       </div>
+      <!-- アフィリエイト枠：保険の見直し（href="#" のままだと自動的に非表示になります） -->
+      <aside class="ad-card" data-ad>
+        <span class="ad-label">PR</span>
+        <div class="ad-body">
+          <h4>保険を書き出したら、見直しのチャンスです</h4>
+          <p>加入中の保険を整理してみると、「保障が重複している」「今の生活に合っていない」ことがよくあります。無料の保険相談で、保険料を減らせるケースも少なくありません。</p>
+          <a class="btn btn-cta" href="#" target="_blank" rel="sponsored noopener">無料で保険の見直し相談をする</a>
+        </div>
+      </aside>
     </div>
 
     <!-- 大切な連絡先 -->
@@ -344,8 +475,49 @@
       </div>
     </div>
 
+    <!-- よくある質問 -->
+    <div class="page info-page" id="page-faq">
+      <h2 class="page-title">よくある質問</h2>
+      <div class="form-section">
+        <div class="faq-item">
+          <h3>Q. エンディングノートに法的効力はありますか？</h3>
+          <p>ありません。財産の分け方など法的に有効な意思表示をしたい場合は、別途遺言書（自筆証書遺言・公正証書遺言など）の作成が必要です。エンディングノートは、遺言書では伝えきれない希望や気持ちを家族に残すためのものです。</p>
+        </div>
+        <div class="faq-item">
+          <h3>Q. 遺言書とエンディングノートはどう違いますか？</h3>
+          <p>遺言書は民法で定められた形式に従って作成する法的な文書で、主に財産の相続について効力を持ちます。エンディングノートは形式が自由で、医療・介護の希望、葬儀の希望、家族へのメッセージなど、遺言書に書けない内容を幅広く残せます。両方を用意するのが理想的です。</p>
+        </div>
+        <div class="faq-item">
+          <h3>Q. 何歳から書くべきですか？</h3>
+          <p>何歳からでも書けます。病気や事故はいつ起こるかわからないため、20〜30代で書き始める方も増えています。すべてを一度に書く必要はなく、書けるところから少しずつ埋めていけば大丈夫です。</p>
+        </div>
+        <div class="faq-item">
+          <h3>Q. 入力したデータはどこに保存されますか？</h3>
+          <p>入力内容はお使いのブラウザ（端末内）にのみ保存され、外部のサーバーには一切送信されません。「データ書出」ボタンでバックアップでき、「印刷する」ボタンで紙に残すこともできます。ただし、ブラウザの履歴削除でデータが消えることがあるため、定期的なバックアップをおすすめします。</p>
+        </div>
+        <div class="faq-item">
+          <h3>Q. 無料で使えますか？</h3>
+          <p>はい、完全無料です。会員登録やアプリのインストールも不要で、ブラウザだけですぐに使えます。</p>
+        </div>
+        <div class="faq-item">
+          <h3>Q. 書いた内容はあとから修正できますか？</h3>
+          <p>いつでも修正できます。生活や気持ちの変化に合わせて、年に1回など定期的に見直すことをおすすめします。記入日を更新しておくと、家族がどの時点の希望かを判断しやすくなります。</p>
+        </div>
+        <div class="faq-item">
+          <h3>Q. 書いたノートは家族にどう共有すればいいですか？</h3>
+          <p>印刷して自宅の分かりやすい場所に保管し、保管場所を信頼できる家族に伝えておく方法が確実です。「データ書出」で保存したファイルを家族と共有する方法もあります。ノートの存在自体を誰も知らないと活用されないため、存在と場所を必ず伝えておきましょう。</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <p>当サイトでは、一部のページでアフィリエイト広告（PR）を利用しています。</p>
+      <p><a href="https://www.sesshokushougai.net/" target="_blank" rel="noopener">運営ブログ</a></p>
+    </footer>
+
   </div>
 
+  <noscript><p style="padding:16px;">このツールの利用にはJavaScriptを有効にしてください。</p></noscript>
   <script src="js/app.js"></script>
 </body>
 </html>
