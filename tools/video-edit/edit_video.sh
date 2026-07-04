@@ -15,7 +15,7 @@ set -euo pipefail
 # ============================== 設定 ==============================
 
 # 入力動画(ダウンロードフォルダのファイル名に合わせて変更してください)
-INPUT="${INPUT:-$HOME/Downloads/input.mp4}"
+INPUT="${INPUT:-$HOME/Downloads/NISA.mp4}"
 
 # 出力ファイル
 OUTPUT="${OUTPUT:-$HOME/Downloads/output_edited.mp4}"
@@ -24,16 +24,26 @@ OUTPUT="${OUTPUT:-$HOME/Downloads/output_edited.mp4}"
 DATE_TEXT="2025/12/23 収録"
 
 # 右上アイキャッチ: "開始-終了|表示テキスト" (時間は MM:SS または H:MM:SS)
-# 銘柄の切り替わりや重要ポイントに合わせて自由に追加・変更してください
+# ※ 2025/12/23収録回(株式分割・伊藤忠商事ほか)の実際の内容に合わせた設定です
+# ※ テキストに半角コロン「:」は使わないでください(ffmpegの区切り文字と衝突します)
 SEGMENTS=(
-  "0:15-0:45|★ 本日の注目銘柄"
-  "2:00-2:40|★ 重要ポイント"
-  # "5:10-6:00|★ 〇〇ホールディングス"
-  # "8:30-9:00|★ まとめ・結論"
+  "0:08-0:22|★ 本日のテーマ「株式分割」"
+  "0:56-1:10|★ 基礎知識「株式分割とは」"
+  "1:55-2:07|★ 分割後も低迷した銘柄"
+  "2:13-2:27|★ 分割後に上昇した銘柄"
+  "3:28-3:42|★ 伊藤忠商事 3つの盤石"
+  "4:26-4:39|★ 鉄則「時間を分散して買う」"
+  "4:56-5:10|★ 個別株はタイミング投資"
+  "5:15-5:29|★ NISA新時代の戦略"
+  "5:58-6:12|★ 失敗しない銘柄選び"
+  "6:28-6:40|★ 危険な失敗に注意"
+  "7:00-7:14|★ 長期投資の黄金ルール"
+  "7:37-7:50|★ 焦らず・じっくり・堅実に"
+  "8:03-8:17|★ オリジナル曲 JALの歌"
 )
 
 # 字幕エリアの高さ(画面下から何%を字幕用に空けるか)
-SUBTITLE_ZONE_PCT=22
+SUBTITLE_ZONE_PCT=14
 
 # ============================ フォント検出 ============================
 
@@ -69,7 +79,7 @@ echo "入力: $INPUT (${W}x${H})"
 DATE_FS=$(( H / 28 ))                          # 収録日: 中位サイズ(1080pで約38px)
 DATE_X=$(( W * 3 / 100 ))                      # 左端から3%
 DATE_Y=$(( H - H * SUBTITLE_ZONE_PCT / 100 - DATE_FS - DATE_FS ))  # 字幕エリアの上
-CATCH_FS=$(( H / 20 ))                         # アイキャッチ: やや大きめ(1080pで約54px)
+CATCH_FS=$(( H / 24 ))                         # アイキャッチ(720pで約30px)
 MARGIN=$(( W * 3 / 100 ))
 
 # 時間文字列(MM:SS / H:MM:SS)を秒に変換
@@ -90,6 +100,7 @@ FILTERS="drawtext=fontfile='${FONT}':text='${DATE_TEXT}':fontcolor=white:fontsiz
 # 右上: アイキャッチ(赤地に白文字・指定区間のみフェード付き表示)
 for seg in "${SEGMENTS[@]}"; do
   range="${seg%%|*}"; label="${seg#*|}"
+  label="${label//:/\\:}"   # 半角コロンをエスケープ(drawtextの区切り文字対策)
   S=$(to_sec "${range%-*}"); E=$(to_sec "${range#*-}")
   FILTERS+=",drawtext=fontfile='${FONT}':text='${label}':fontcolor=white:fontsize=${CATCH_FS}"
   FILTERS+=":box=1:boxcolor=0xD32F2F@0.85:boxborderw=18"
