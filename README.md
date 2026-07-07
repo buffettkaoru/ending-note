@@ -40,3 +40,11 @@ GitHub Pages で公開中です（`main` ブランチが自動デプロイされ
 ## ブログ全体の改善計画
 
 読者を増やして収益化するための全体戦略は [docs/blog-improvement-plan.md](docs/blog-improvement-plan.md) を参照してください。
+
+## YouTubeチャンネルの改善計画
+
+YouTube「バフェットかおる」を50代60代に届けて月100万円の収益を目指す戦略は以下を参照してください：
+
+- [docs/youtube-improvement-plan.md](docs/youtube-improvement-plan.md) — 現状分析・収益設計・コンテンツ戦略・90日ロードマップ
+- [docs/youtube-video-企画20本.md](docs/youtube-video-企画20本.md) — すぐ作れる動画企画20本（タイトル・サムネ文言・構成案）
+- [docs/youtube-templates.md](docs/youtube-templates.md) — チャンネル概要文・概要欄・固定コメント等のコピペ用テンプレート
