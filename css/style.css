@@ -58,6 +58,8 @@ body { font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN","Meiryo",sans-se
 .form-note { font-size:0.8rem; color:var(--gray); margin:8px 0; }
 .repeater-item { padding:12px 0; border-bottom:1px dashed var(--border); }
 .repeater-item:last-child { border-bottom:none; }
+.btn-remove { margin-top:4px; padding:0.2rem 0.6rem; font-size:0.75rem; background:transparent; color:var(--gray); border:1px solid var(--border); border-radius:4px; cursor:pointer; }
+.btn-remove:hover { color:var(--accent); border-color:var(--accent); }
 
 /* ガイド・FAQページ */
 .guide-text { color:var(--gray); margin-bottom:8px; }
@@ -91,7 +93,7 @@ body { font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN","Meiryo",sans-se
   body { background:#fff; color:#000; }
   .form-section { border:1px solid #ccc; }
   .form-input, .form-textarea { border:1px solid #ccc; background:#fff; color:#000; }
-  .btn, .theme-toggle { display:none; }
+  .btn, .theme-toggle, .btn-remove { display:none; }
 }
 
 @media (max-width:768px) {
