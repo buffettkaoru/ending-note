@@ -71,7 +71,12 @@
   ];
 
   function getArray(key) {
-    return getNested(data, key) || [];
+    let arr = getNested(data, key);
+    if (!Array.isArray(arr)) {
+      arr = [];
+      setNested(data, key, arr);
+    }
+    return arr;
   }
   function setArray(key, arr) {
     setNested(data, key, arr);
@@ -90,18 +95,21 @@
       div.className = "repeater-item";
       let gridHtml = '<div class="form-grid">';
       config.fields.forEach((field, fi) => {
-        const val = item[field] || "";
+        const val = item[field] != null ? String(item[field]) : "";
         const label = config.labels[fi];
         if (config.fieldTypes && config.fieldTypes[field]) {
-          const options = config.fieldTypes[field].map((o) =>
+          const options = ['<option value="">選択</option>'].concat(config.fieldTypes[field].map((o) =>
             `<option ${val === o ? "selected" : ""}>${o}</option>`
-          ).join("");
+          )).join("");
           gridHtml += `<div class="form-group"><label>${label}</label><select class="form-input" data-ridx="${idx}" data-rfield="${field}">${options}</select></div>`;
         } else {
           gridHtml += `<div class="form-group"><label>${label}</label><input type="text" class="form-input" value="${val.replace(/"/g, '&quot;')}" data-ridx="${idx}" data-rfield="${field}"></div>`;
         }
       });
       gridHtml += "</div>";
+      if (arr.length > 1) {
+        gridHtml += `<button type="button" class="btn-remove" data-remove="${idx}">× この行を削除</button>`;
+      }
       div.innerHTML = gridHtml;
 
       div.querySelectorAll("[data-ridx]").forEach((el) => {
@@ -114,6 +122,15 @@
           setArray(config.arrayKey, a);
         });
       });
+      const removeBtn = div.querySelector("[data-remove]");
+      if (removeBtn) {
+        removeBtn.addEventListener("click", () => {
+          const a = getArray(config.arrayKey);
+          a.splice(idx, 1);
+          setArray(config.arrayKey, a);
+          renderRepeater(config);
+        });
+      }
       container.appendChild(div);
     });
   }
