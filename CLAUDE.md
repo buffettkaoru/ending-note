@@ -20,6 +20,7 @@
 | `docs/youtube-video-企画20本.md` | 動画企画ストック |
 | `docs/youtube-templates.md` | 概要欄・固定コメント等のテンプレート |
 | `docs/claude-in-chrome-指示書.md` | Claude in Chrome（ブラウザ操作AI）用のYouTube Studio作業指示 |
+| `docs/assets/shorts/make_short.py` | **9:16ショート生成パイプライン（設定JSONで動画ごとに使い回す）**。上部アイキャッチ＋下部字幕＋サムネイル自動生成。制作メモは `docs/youtube-ショート制作_*.md` |
 
 ### データから確定している事実（推測で上書きしないこと）
 
