@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ショート用アイキャッチ生成ツール</title>
+<!-- 文字の書き換え方は同じフォルダの README.md を参照 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; background: transparent; overflow: hidden; }
+  body.preview { background: linear-gradient(160deg, #3a3f4a 0%, #23262e 60%, #15171c 100%); }
+  body.preview::after {
+    content: "（動画がここに映るイメージ）";
+    position: absolute; top: 900px; left: 0; width: 1080px;
+    text-align: center; color: rgba(255,255,255,.35);
+    font-family: "Noto Sans JP"; font-size: 44px; font-weight: 500;
+  }
+  .wrap {
+    position: absolute; top: 150px; left: 50px; width: 980px;
+    font-family: "Noto Sans JP", sans-serif;
+  }
+  .badge {
+    position: relative; z-index: 2; display: inline-block;
+    margin: 0 0 -34px 34px;
+    background: #E60033; color: #fff;
+    font-size: 52px; font-weight: 900; letter-spacing: .04em;
+    padding: 14px 44px 18px; border-radius: 18px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.45);
+  }
+  .band {
+    position: relative; z-index: 1;
+    background: #FFD800;
+    border: 10px solid #111;
+    border-radius: 44px;
+    padding: 66px 30px 44px;
+    text-align: center;
+    box-shadow: 0 18px 44px rgba(0,0,0,.55);
+  }
+  .line {
+    font-size: 118px; font-weight: 900; color: #111;
+    line-height: 1.22; letter-spacing: .01em;
+    text-shadow: 0 3px 0 rgba(0,0,0,.08);
+    white-space: nowrap;
+  }
+  .line .red { color: #E60033; }
+  .line .big { font-size: 132px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="badge" id="badge"></div>
+  <div class="band">
+    <div class="line" id="line1"></div>
+    <div class="line" id="line2"></div>
+  </div>
+</div>
+<script>
+// ▼▼▼ 文字を変えたいときは、この4案の badge / l1 / l2 を書き換えて保存 ▼▼▼
+//     <span class='red'>〜</span> で囲んだ部分が赤字になります（1〜2語だけ推奨）
+const VARIANTS = {
+  A: { badge: "知らないと損",       l1: "60歳の貯金額",   l2: "平均<span class='red big'>いくら？</span>" },
+  B: { badge: "年金世代は必見",     l1: "年金のコレ",     l2: "知らないと<span class='red big'>損</span>" },
+  C: { badge: "資産1.6億円の元CA", l1: "それでも私が",   l2: "<span class='red'>パート</span>で働く理由" },
+  D: { badge: "元CAの高配当株",     l1: "持ってるだけで", l2: "<span class='red'>お金が入る</span>株" },
+};
+// ▲▲▲ ここまで ▲▲▲
+
+const p = new URLSearchParams(location.search);
+const v = VARIANTS[p.get("v") || "A"];
+document.getElementById("badge").textContent = v.badge;
+document.getElementById("line1").innerHTML = v.l1;
+document.getElementById("line2").innerHTML = v.l2;
+if (p.get("mode") === "preview") document.body.classList.add("preview");
+
+// 枠からはみ出す行は自動で文字を縮小する
+document.fonts.ready.then(() => {
+  for (const el of document.querySelectorAll(".line")) {
+    let size = parseFloat(getComputedStyle(el).fontSize);
+    while (el.scrollWidth > el.clientWidth && size > 40) {
+      size -= 2;
+      el.style.fontSize = size + "px";
+      for (const b of el.querySelectorAll(".big")) b.style.fontSize = (size * 1.12) + "px";
+    }
+  }
+});
+</script>
+</body>
+</html>
